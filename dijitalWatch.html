@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Saat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+
+        .main {
+            background-color: #1F1D36;
+            width: 400px;
+            height: 175px;
+            margin: 15% auto;
+            position: relative;
+            padding: 30px;
+            box-shadow: 0 0 16px rgba(31, 29, 54, 0.7), 0 0 20px rgb(31, 29, 54, 0.5), 0 0 24px rgb(31, 29, 54, 0.3);
+        }
+
+        .badge {
+            width: 40%;
+            background-color: #3a49ad;
+            color: white;
+            height: 40px;
+
+            border-radius: 20px;
+            font-weight: bolder;
+            position: absolute;
+            top: -20px;
+            left: 30%;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .clock {
+
+            text-align: center;
+            font-size: 42px;
+            height: 100%;
+            padding-top: 16px;
+            color: #FF7A00;
+
+            text-shadow: 0 0 8px rgba(255, 123, 0, 0.8), 0 0 12px rgb(255, 122, 0, 0.6), 0 0 16px rgb(255, 122, 0, 0.4), 0 0 20px rgb(255, 122, 0, 0.2);
+        }
+
+        #date {
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="badge">
+            CLOCKLY
+        </div>
+        <div class="clock">
+            <span id="hour"></span>
+            <span id="minute"></span>
+            <span id="second"></span> <br>
+            <span id="date"></span>
+        </div>
+    </div>
+    <script>
+        function clock() {
+            let fullDate = new Date();
+            let hours = fullDate.getHours();
+            let mins = fullDate.getMinutes();
+            let secs = fullDate.getSeconds();
+            let day = fullDate.getDay();
+            let date = fullDate.getDate();
+            let month = fullDate.getMonth();
+            let year = fullDate.getFullYear();
+
+            var dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            var monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (mins < 10) {
+                mins = "0" + mins;
+            }
+            if (secs < 10) {
+                secs = "0" + secs;
+            }
+
+            document.getElementById("hour").innerHTML = hours;
+            document.getElementById("minute").innerHTML = ":" + mins;
+            document.getElementById("second").innerHTML = ":" + secs;
+            document.getElementById('date').innerHTML = date + ' (' + dayArray[day] + ') ' + monthArray[month] + ' ' + year;
+        }
+
+        setInterval(clock, 100);
+    </script>
+</body>
+
+</html>
+<!-- Coded By Orhun GÜN -->
